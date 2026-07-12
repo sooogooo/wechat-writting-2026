@@ -36,7 +36,23 @@ The mode is inferred from the user request — no need to declare it. If the req
 
 ## Install
 
-### Claude Code
+### NPX Skills (recommended — works across Claude Code, Cursor, Gemini, Copilot, VSCode)
+
+```bash
+# install latest
+npx skills add sooogooo/wechat-writting-2026
+
+# install a pinned version
+npx skills add sooogooo/wechat-writting-2026 --version v0.1.0
+
+# list / check available skills
+npx skills find wechat
+```
+
+The registry site: [skills.sh](https://skills.sh).
+After install, the skill is auto-recognized by supported agents — typically no restart required.
+
+### Claude Code — manual
 
 ```bash
 # option A — global

@@ -115,7 +115,44 @@ If the article is already strong, the diagnosis should say so honestly and the r
 
 ## 3. Cross-platform install & trigger
 
-### 3.1 Claude Code
+### 3.0 NPX Skills (recommended for multi-agent users)
+
+[skills.sh](https://skills.sh) is a community registry + CLI for installing Skills (filesystem-resident prompt workflows) into any supported agent in one step.
+
+```bash
+# install latest
+npx skills add sooogooo/wechat-writting-2026
+
+# install a pinned version (good for reproducibility)
+npx skills add sooogooo/wechat-writting-2026 --version v0.1.0
+
+# find skills in the registry
+npx skills find wechat
+
+# update to the latest released version
+npx skills update wechat-writing
+```
+
+| Prerequisite           | Required?  | Note                                       |
+| ---------------------- | ---------- | ------------------------------------------ |
+| Node.js ≥ 18           | yes        | ships with `npx`                           |
+| A supported agent      | yes        | Claude Code · Cursor · Gemini · Copilot · VSCode · etc. |
+| Internet access        | yes        | to pull from the registry                  |
+| Git on PATH            | no         | the CLI handles clone resolution itself    |
+
+What NPX Skills does for you:
+
+- Pulls the repo (or the specific release tarball).
+- Resolves the `SKILL.md` frontmatter and figures out the right drop-in path per agent.
+- Auto-registers the slash trigger (frontmatter `name:` becomes the `/command`).
+- Lets you update or remove with `update` / `remove` — no more hunting through `~/.claude/skills/` to find where you cloned it.
+
+When to choose NPX Skills vs manual `git clone`:
+
+- Choose **NPX Skills** if you want one command across multiple agents, or if you want version pinning and easy removal.
+- Choose **manual `git clone`** if you want to develop or fork the skill locally (e.g., you're contributing back).
+
+### 3.1 Claude Code — manual
 
 ```
 # global
@@ -125,7 +162,6 @@ git clone https://github.com/sooogooo/wechat-writting-2026 ~/.claude/skills/wech
 Trigger: `/wechat-writing <prompt>` — frontmatter `name: wechat-writing` becomes the slash command.
 
 ### 3.2 Codex CLI / OpenAI Codex
-
 Two options.
 
 **Option A — symlink into instructions/**
@@ -174,6 +210,14 @@ REFERENCE = {
 ---
 
 ## 4. Troubleshooting
+
+### 4.0 NPX Skills specific
+
+- **`npx: command not found`** — Node.js / npm not on PATH. Install Node 18+ from <https://nodejs.org>.
+- **`skill not found in registry`** — the repo hasn't been indexed yet. Wait a few minutes, or use the manual `git clone` recipe in §3.1.
+- **`Permission denied` when installing globally** — prefix with `sudo` on macOS / Linux, or use `npx skills add ... --prefix ~/.local` to install user-scoped.
+- **Skill installs but slash command is missing** — the agent may need a restart. For Claude Code: `/exit` then re-enter; for Cursor: reload the window (`Ctrl/Cmd+Shift+P` → "Developer: Reload Window").
+- **Want to remove the skill** — `npx skills remove wechat-writing`, or for the manual install: `rm -rf ~/.claude/skills/wechat-writing` (or the equivalent path for your agent).
 
 ### 4.1 Output reads like generic AI
 

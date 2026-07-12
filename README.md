@@ -4,19 +4,7 @@ A writing skill that packages the editorial position of one senior medical-aesth
 
 Works in **Claude Code**, **Codex CLI**, **Cursor**, **Continue**, **Cline**, **GitHub Copilot Workspace**, **JetBrains AI Assistant**, **OpenAI Codex**, and any other AI coding assistant that loads filesystem-resident instruction files.
 
-> TODO(sooogooo): write the one-line project positioning here in your own voice.
-> Suggested frame (do NOT copy — please rewrite to feel like you):
-> "不是让 AI 写得更多,是让它写得克制;不是写得漂亮,是写得对。"
->
-> Constraints for the sentence you write:
-> - 1 short sentence, ≤ 30 Chinese characters
-> - no emoji
-> - keep it as a judgment, not a sales pitch
-> - maintain the skill's tone: restraint, structural, no exclamation
->
-> Place your line here ↓
-
-<!-- TODO_LINE -->
+> 用医生与经营者的双重视角，拆解医美背后的审美、商业与人性。把医美行业里复杂的事讲明白，帮从业者少走弯路，也帮消费者少花冤枉钱。
 
 ---
 
